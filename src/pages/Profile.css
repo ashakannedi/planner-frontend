@@ -1,0 +1,84 @@
+.custom-header {
+    background-color: #f0ebce; /* Change this to your desired background color */
+}
+  
+.custom-header-title {
+    color: black; /* Change the text color to black */
+    padding-left: 20%;
+}
+
+
+.profile-container {
+    width: 90%; /* Adjusted for better responsiveness */
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f0ebce; /* Use Ionic color variables */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Reduced shadow for softer look */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column; /* Adjusted for column layout */
+}
+
+.profile-container img {
+    width: 60px; /* Increased size for better visibility */
+    height: 60px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.details {
+    padding-left: 20%; /* Adjusted padding */
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+}
+
+.formdata {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f0ebce;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Adjusted to column for better mobile responsiveness */
+    margin-bottom: 15px;
+    align-items: flex-start; /* Align labels and inputs to the start */
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px; /* Added margin to separate from input */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--ion-color-medium); /* Use Ionic color variables */
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+#changepass {
+    border-radius: 20px; /* Adjusted for a more rounded button */
+    background-color: var(--ion-color-warning); /* Use Ionic color variables */
+    color: var(--ion-color-dark);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+}
