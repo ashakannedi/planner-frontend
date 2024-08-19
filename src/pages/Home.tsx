@@ -147,7 +147,6 @@ const Home: React.FC = () => {
             {tasks.map((task, index) => (
               <tr key={task.id}>
                 <td><Link to={`/details/${task.id}`}>{task.id}</Link></td>
-                <td><Link to={`/registration`}></Link></td>
                 {editIndex === index ? (
                   <>
                     <td><IonInput name="name" value={editedTask.name || ''} onIonInput={handleInputChange} /></td>

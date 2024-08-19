@@ -23,7 +23,6 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Details from './pages/Details';
-import Registration from './pages/Registration';
 
 
 setupIonicReact();
@@ -36,19 +35,15 @@ const App = () => {
     <IonReactRouter>
       <IonRouterOutlet>
         <Switch>
-          <Route path="/home">
-            <Home/>
-          </Route> 
-          <Route path="/registration">
-            <Registration/>
-          </Route> 
-         <Route path="/details/:id">
-           <Details/>
-         </Route>
-         <Route>
+        <Route path="/home">
+          <Home/>
+        </Route> 
+      <Route path="/details/:id">
+      <Details/>
+    </Route>
+    <Route>
           <Redirect to="/home" />
-         </Route>
-         
+        </Route>
         </Switch> 
       </IonRouterOutlet>
     </IonReactRouter>
