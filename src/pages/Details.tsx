@@ -1,105 +1,85 @@
-import React, {useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom';
-import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonList, IonItem, IonLabel } from '@ionic/react';
-
-type DetailData = {
-  name: string;
-  title: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-  status: string;
-  percentage: string;
-  priority: string;
-  assignedDate: string;
-  assignedDeadline: string;
-};
-
-type Details = {
-  [key: string]: DetailData;
-};
-
-
+import { IonCard, IonCardContent, IonCardTitle, IonPage,IonLabel, IonItem,IonText } from '@ionic/react';
+import React, { useEffect, useState } from 'react';
+import { fetchTaskById, TaskData } from '../Service';
+import { useParams } from 'react-router';
 const Details: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const [data, setData] = useState<DetailData | null>(null);
-  const details: Details = {
-    '01': { name: 'Dev', title: 'Frontend', description: 'Development of visual elements...', startDate: '21-08-2024', endDate: '23-09-2024', status: 'Started', percentage: '10%', priority: 'High', assignedDate: '21-08-2024', assignedDeadline: '15-09-2024' },
-    '02': { name: 'Devi', title: 'Frontend Engineer', description: 'Development of visual elements...', startDate: '20-08-2024', endDate: '20-09-2024', status: 'Started', percentage: '20%', priority: 'High', assignedDate: '19-08-2024', assignedDeadline: '23-09-2024' }
-  };
+const {id} = useParams<{id:string}>();
+const [task, setTask]= useState<TaskData | null>(null);
 
-  useEffect(() => {
-    setData(details[id]);
+
+  useEffect(()=>{
+    fetchTaskById(id, (err,data) =>{
+      if(err){
+        console.log('failed to fetch details')
+      }else{
+        setTask(data || null)
+      }
+    })
   }, [id]);
-  
-
-//   const data = details[id];
-
-  if (!data) {
-    return <div>No data found for ID: {id}</div>;
-  }
-
   return (
-    <IonCard>
-      <IonCardHeader>
-        <IonCardTitle>Details for ID: {id}</IonCardTitle>
-      </IonCardHeader>
-      <IonCardContent>
-        <IonList>
-          <IonItem>
-            <IonLabel>
-              <strong>Name:</strong> {data.name}
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>
-              <strong>Title:</strong> {data.title}
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>
-              <strong>Description:</strong> {data.description}
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>
-              <strong>Start Date:</strong> {data.startDate}
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>
-              <strong>End Date:</strong> {data.endDate}
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>
-              <strong>Status:</strong> {data.status}
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>
-              <strong>Percentage:</strong> {data.percentage}
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>
-              <strong>Priority:</strong> {data.priority}
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>
-              <strong>Assigned Date:</strong> {data.assignedDate}
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>
-              <strong>Assigned Deadline:</strong> {data.assignedDeadline}
-            </IonLabel>
-          </IonItem>
-        </IonList>
-      </IonCardContent>
-    </IonCard>
-  );
+   
+    <IonPage>
+      <IonCard>
+        <IonCardTitle style={{
+          borderRadius:8,
+         fontSize:25,
+         color:'#0f1014'
+        }}> Project Details</IonCardTitle>
+        <IonCardContent> 
+          {task ? (
+            <>
+        <IonItem>
+           <IonLabel>ID:</IonLabel>
+           <IonText>{task.id}</IonText>
+        </IonItem>
+        <IonItem>
+           <IonLabel>Project Id:</IonLabel>
+           <IonText>{task.id}</IonText>
+        </IonItem>
+        <IonItem>
+           <IonLabel>Title:</IonLabel>
+           <IonText>{task.title}</IonText>
+        </IonItem>
+        <IonItem>
+           <IonLabel>Description:</IonLabel>
+           <IonText>{task.description}</IonText>
+        </IonItem>
+        <IonItem>
+           <IonLabel>Start Date:</IonLabel>
+           <IonText>{task.startDate}</IonText>
+        </IonItem>
+        <IonItem>
+           <IonLabel>End Date:</IonLabel>
+           <IonText>{task.endDate}</IonText>
+        </IonItem>
+        <IonItem>
+           <IonLabel>Status:</IonLabel>
+           <IonText>{task.status}</IonText>
+        </IonItem>
+        <IonItem>
+           <IonLabel>Percentage:</IonLabel>
+           <IonText>{task.percentage}</IonText>
+        </IonItem>
+        <IonItem>
+           <IonLabel>Priority:</IonLabel>
+           <IonText>{task.priority}</IonText>
+        </IonItem>
+        <IonItem>
+           <IonLabel>Assigned Date:</IonLabel>
+           <IonText>{task.assignedDate}</IonText>
+        </IonItem>
+        <IonItem>
+           <IonLabel>Assigned Deadline:</IonLabel>
+           <IonText>{task.assignedDeadline}</IonText>
+        </IonItem></> ) : (
+          <div> no details</div>
+        )}
+        </IonCardContent>
+      </IonCard>
+    </IonPage>
+    
+   )
+
 };
 
 export default Details;
