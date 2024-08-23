@@ -48,6 +48,8 @@ const App = () => {
           <Route path="/taskspage/:id" component={Taskspage}></Route> 
           <Route path="/details/:id" component={Details}><Details/></Route>
           <Route path="/home"><Home/></Route>
+
+          {/* TODO ACCESS ALL ROUTES FROM THIS COMPONENT */}
     {/*  
         <Route path="/projects">
           <Project/>
