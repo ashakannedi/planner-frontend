@@ -26,32 +26,27 @@ import Details from './pages/Details';
 import Registration from './pages/Registration';
 
 
+
+
+
+
 setupIonicReact();
 
-const App = () => {
-  
-
-  return(
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Switch>
-        <Route path="/home">
-          <Home/>
-        </Route> 
-        <Route path="/registration">
-          <Registration/>
-        </Route> 
-      <Route path="/details/:id">
-      <Details/>
-    </Route>
-    <Route>
-          <Redirect to="/home" />
-        </Route>
-        </Switch> 
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Switch>
+            <Route path="/home" component={Home} />
+            <Route path="/register" component={Registration} />
+            <Route path="/details/:id" component={Details} />
+           
+          </Switch>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
 }
+
 export default App;
