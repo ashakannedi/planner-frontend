@@ -51,16 +51,16 @@ export default function Registration() {
         }
     }
     return (
-        <div className='registration-container' >
-            <div className='image-container'>
-                <img src="FourGID.jpg" alt="Registration" className="left-image" />
+        <div className='registration-container-R' >
+            <div className='image-container-R'>
+                <img src="FourGID.jpg" alt="Registration" className="left-image-R" />
             </div>
-            <div className="form-items">
-                <h3 className="form-title">Registration</h3>
+            <div className="form-items-R">
+                <h3 className="form-title-R">Registration</h3>
                 <form onSubmit={handleSubmit} >
-                    <div className="form-group">
-                        <div className="input-container">
-                            <IonIcon icon={personCircleOutline} className="input-icon" />
+                    <div className="form-group-R">
+                        <div className="input-container-R">
+                            <IonIcon icon={personCircleOutline} className="input-icon-R" />
                             <input type="text" 
                             placeholder='Enter Full Name' 
                             id="user" required 
@@ -68,9 +68,9 @@ export default function Registration() {
                             onChange={(event)=>{setName(event.target.value)}}/>
                         </div>
                     </div>
-                    <div className="form-group">
-                        <div className="input-container">
-                            <IonIcon icon={mailOutline} className="input-icon" />
+                    <div className="form-group-R">
+                        <div className="input-container-R">
+                            <IonIcon icon={mailOutline} className="input-icon-R" />
                             <input type="email" 
                             placeholder='Enter Email' 
                             id="email" required
@@ -78,9 +78,9 @@ export default function Registration() {
                              onChange={(event)=>{setEmail(event.target.value)}} />
                         </div>
                     </div>
-                    <div className="form-group">
-                        <div className="input-container">
-                            <IonIcon icon={lockClosedOutline} className="input-icon" />
+                    <div className="form-group-R">
+                        <div className="input-container-R">
+                            <IonIcon icon={lockClosedOutline} className="input-icon-R" />
                             <input type="password" 
                             placeholder='Password'
                              id="password" required 
@@ -88,9 +88,9 @@ export default function Registration() {
                              onChange={(event)=>{setPassword(event.target.value)}}/>
                         </div>
                     </div>
-                    <div className="form-group">
-                        <div className="input-container">
-                            <IonIcon icon={lockClosedOutline} className="input-icon" />
+                    <div className="form-group-R">
+                        <div className="input-container-R">
+                            <IonIcon icon={lockClosedOutline} className="input-icon-R" />
                             <input type="password" 
                             placeholder='Confirm Password' 
                             id="confirmPassword" required 
@@ -98,9 +98,9 @@ export default function Registration() {
                             onChange={(event)=>{setConfirmPassword(event.target.value)}}/>
                         </div>
                     </div>
-                    <div className="form-group">
-                        <div className="input-container">
-                            <IonIcon icon={callOutline} className="input-icon" />
+                    <div className="form-group-R">
+                        <div className="input-container-R">
+                            <IonIcon icon={callOutline} className="input-icon-R" />
                             <input type="tel" 
                             placeholder='Number' 
                             id="number" 
@@ -108,9 +108,9 @@ export default function Registration() {
                             onChange={(event)=>{setMobile(event.target.value)}} />
                         </div>
                     </div>
-                    <div className="form-group">
-                        <div className="input-container">
-                            <IonIcon icon={personOutline} className="input-icon"  />
+                    <div className="form-group-R">
+                        <div className="input-container-R">
+                            <IonIcon icon={personOutline} className="input-icon-R"  />
                             <select id="role" name="role" required className="underline-input"  onChange={(event)=>{setRole(event.target.value)}}>
                             <option value="" disabled hidden
                             selected>Select Role</option>
@@ -121,9 +121,9 @@ export default function Registration() {
                             </select>
                         </div>
                     </div>
-                    <div className="form-group">
-                        <div className="input-container">
-                            <IonIcon icon={personOutline} className="input-icon" />
+                    <div className="form-group-R">
+                        <div className="input-container-R">
+                            <IonIcon icon={personOutline} className="input-icon-R" />
                             <select id="gender" name="gender" required className="underline-input" onChange={(event)=>{setGender(event.target.value)}}>
                             <option value="" disabled hidden
                              selected>Select  Gender </option>
@@ -133,7 +133,7 @@ export default function Registration() {
                             </select>
                         </div>
                     </div>
-                    <div className="button-container">
+                    <div className="button-container-R">
                         <button type="submit" className="btn btn-primary">Register</button>
                     <button type="button" className="btn btn-secondary">SignIn</button>
                     </div>
