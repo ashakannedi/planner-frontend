@@ -25,12 +25,19 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
+import Registration from './pages/Registration';
+
+
+
+
 
 import Users from './pages/Users';
 import Userproject from './pages/Userproject';
 import Adduser from './pages/Adduser';
 import Usertask from './pages/Usertask';
 import TaskbyUserid from './pages/TaskbyUserid';
+import Task from './pages/Task';
+import Project from'./pages/Project';
 
 setupIonicReact();
 
@@ -41,40 +48,24 @@ const App = () => {
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Switch>
+      <Switch>
           <Route path="/navbar"><Navbar/></Route> 
           <Route path="/projects"><Projects/></Route>
           <Route path="/taskbyuserid"><TaskbyUserid/></Route>
           <Route path="/taskspage/:id" component={Taskspage}></Route> 
           <Route path="/details/:id" component={Details}><Details/></Route>
           <Route path="/home"><Home/></Route>
-
-          {/* TODO ACCESS ALL ROUTES FROM THIS COMPONENT */}
-    {/*  
-        <Route path="/projects">
-          <Project/>
-        </Route>
-       
-        <Route path="/users">
-          <Users/>
-        </Route>  
-        <Route path="/adduser">
-          <Adduser/>
-        </Route> 
-        <Route path="/userproject">
-          <Userproject/>
-        </Route> 
-        <Route path="/usertask">
-          <Usertask/>
-        </Route>    */}
-    {/* <Route>
-          <Redirect to="/home" />
-        </Route> */}
+          <Route path="/register" component={Registration} />
+          <Route path="/usertask" component={Task}/>
+          <Route path="/adduser"component={Adduser}/>
+          <Route path="/userproject" component={Project}/>
+           <Route path="/user" component={Users}/>
         </Switch> 
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
 );
 }
+
 export default App;
 
