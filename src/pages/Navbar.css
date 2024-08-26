@@ -1,8 +1,19 @@
 .navbar {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap; /* Allows items to wrap to the next line if necessary */
-    
-    padding: 10px;
-    position: fixed;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:  7px; 
+  background-color: #b1dfe7; 
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 4px 5px rgba(190, 212, 219, 0.637); 
+ }
+ .ion-button {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 12px; 
+}
+.ion-select {
+  width: 100%; 
+}
+

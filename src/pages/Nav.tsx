@@ -1,13 +1,12 @@
-import { IonContent, IonItem, IonLabel, IonPage, IonSelect ,IonSelectOption,IonPopover} from "@ionic/react";
+import { IonContent,IonHeader, IonSelect ,IonSelectOption,IonPopover,IonPage, IonToolbar, IonButton} from "@ionic/react";
 import React,{useState} from "react";
 import {useHistory} from 'react-router-dom';
 import './Navbar.css'
 const Navbar:React.FC = () =>{
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [showSelect, setShowSelect] = useState<boolean>(false);
   const history = useHistory();
-  const handleCreateClick = (event: React.MouseEvent<HTMLIonLabelElement, MouseEvent>) => {
-     // Show the dropdown
-  };
+  
 
   const handleOptionSelect = (e: CustomEvent) => {
     setSelectedOption(e.detail.value);
@@ -40,24 +39,32 @@ const Navbar:React.FC = () =>{
   };
   return (
     <IonPage>
+          <IonHeader className="navbar">
+                <IonButton onClick={() => history.push('/projects')}>Projects</IonButton>
+                <IonButton onClick={()=> history.push('/taskbyuserid')}>Tasks</IonButton>
+                  <IonButton onClick={NavigateToUser}>Users</IonButton>
+                  <IonButton 
+                      onMouseEnter={() => setShowSelect(true)}
+                      onMouseLeave={() => setShowSelect(false)}
+                      style={{ position: 'relative', cursor: 'pointer' }}>
+                      Create
+                    {showSelect && (
+                    <IonSelect className="select-container"
+                  value={selectedOption}
+                  onIonChange={handleOptionSelect}
+                  interface="popover">
+                  <IonSelectOption value="adduser">User</IonSelectOption>
+                  <IonSelectOption value="project">Project</IonSelectOption>
+                  <IonSelectOption value="task">Task</IonSelectOption>
+                </IonSelect>
+            )}
+              </IonButton>
+        </IonHeader>
       <IonContent>
-    <div className="navbar">
-        <IonItem>
-            <IonLabel   onClick={() => history.push('/projects')}>Projects</IonLabel></IonItem>
-            <IonItem>  <IonLabel onClick={()=> history.push('/taskbyuserid')}>Tasks</IonLabel></IonItem>
-            <IonItem> <IonLabel onClick={NavigateToUser}>Users</IonLabel></IonItem>
-            <IonItem> <IonLabel onClick={handleCreateClick} style={{ cursor: 'pointer' }}>Create</IonLabel>
-          <IonSelect
-            value={selectedOption}
-            onIonChange={handleOptionSelect} interface="popover"
-          >
-            <IonSelectOption value="adduser"> User</IonSelectOption>
-            <IonSelectOption value="project" >Project</IonSelectOption>
-            <IonSelectOption value="task">Task</IonSelectOption>
-          </IonSelect></IonItem>
-          </div>
-            </IonContent>
-        </IonPage>
+            
+      </IonContent>
+    </IonPage>
+       
         )
 }
 export default Navbar;

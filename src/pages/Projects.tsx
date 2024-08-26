@@ -34,31 +34,29 @@ const Projects:React.FC = () =>{
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <table style={{
-                   width: 100,
-                   borderCollapse: 'collapse',
-                   margin: 16 ,
-                   backgroundColor: '#fff',
-                   boxShadow: '0 2 4 rgba(0, 0, 0, 0.1)'
-              }}>
-                    <tr  >
-                        <th>ProjectId</th>
-                        <th>Project Name</th>
-                        <th>Users</th>
-                    </tr>
-                    <tbody>
-                    {projects.map(Projects => (
-                    <tr key={Projects.id}>
-                      
-                        <td><IonButton onClick={() => handleProjectClick(Projects.id)} fill="clear">
-                                        {Projects.id}
-                                    </IonButton></td>
-                        <td>{Projects.name}</td>
-                        <td>Users1</td>
+            <table style={{ width: 100,borderCollapse: 'collapse', margin: 16,backgroundColor: '#fff',fontSize: 22,fontFamily:'serif',borderBlock:'2px solid #80807c'}}>
+                <thead style={{backgroundColor: '#b4cad6',padding: 40,}}>
+                    <th  style={{ padding: 30,paddingLeft:100,textAlign: 'left', width: 33}}>ProjectId</th>
+                    <th  style={{padding: 30,paddingLeft:100,textAlign: 'left',width: 33}}>ProjectName</th>
+                    <th  style={{padding: 30,paddingLeft:100,textAlign: 'left',width: 34}}>Users</th>
+                </thead>
+                <tbody style={{padding: '12px',}}>{projects.map(Projects => (
+                    <tr key={Projects.id} style={{
+                        cursor: 'pointer', 
+                        transition: 'background-color 0.3s',
+                        padding: '12px',
+                        backgroundColor: '#d5d6e3'
+                      }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e3d1e3'} 
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#fff'} 
+                    >
+                        <td><IonButton style={{ padding: 20 ,paddingLeft:100}} onClick={() => handleProjectClick(Projects.id)} fill="clear">{Projects.id}</IonButton></td>
+                        <td  style={{ padding: 20,paddingLeft:100 }}>{Projects.name}</td>
+                        <td style={{ padding: 20,paddingLeft:100, }}>Users1</td>
                     </tr>  ))}
                     <tr>
                        
-                    </tr></tbody>
+                    </tr>
+                </tbody>
                 </table>
             </IonContent>
         </IonPage>

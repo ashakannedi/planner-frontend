@@ -1,11 +1,10 @@
-import { IonCard, IonCardContent, IonCardTitle, IonPage,IonLabel, IonItem,IonText } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardTitle, IonPage,IonLabel, IonItem,IonText, IonContent } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import { fetchTaskById, TaskData } from '../Service';
 import { useParams } from 'react-router';
 const Details: React.FC = () => {
 const {id} = useParams<{id:string}>();
 const [task, setTask]= useState<TaskData | null>(null);
-
 
   useEffect(()=>{
     fetchTaskById(id, (err,data) =>{
@@ -16,18 +15,27 @@ const [task, setTask]= useState<TaskData | null>(null);
       }
     })
   }, [id]);
+
   return (
    
-    <IonPage>
-      <IonCard>
+    <IonPage style={{alignItems:'center'}}>
+      <IonContent>
+      <IonCard style={{
+               maxWidth: '650px', 
+               width: '100%',
+               borderRadius: '12px',
+               boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+               backgroundColor:'#a4ebd7',
+               alignItems:'center'}}>
         <IonCardTitle style={{
-          borderRadius:8,
-         fontSize:25,
-         color:'#0f1014'
-        }}> Project Details</IonCardTitle>
-        <IonCardContent> 
+               fontSize: '22px', 
+               fontFamily:'serif',
+               color: '#12120f',
+               textAlign: 'center',
+               }}> Task Details</IonCardTitle>
+        <IonCardContent style={{backgroundColor:'#a4ebd7'}}> 
           {task ? (
-            <>
+            <div>
         <IonItem>
            <IonLabel>ID:</IonLabel>
            <IonText>{task.id}</IonText>
@@ -57,8 +65,8 @@ const [task, setTask]= useState<TaskData | null>(null);
            <IonText>{task.status}</IonText>
         </IonItem>
         <IonItem>
-           <IonLabel>Percentage:</IonLabel>
-           <IonText>{task.percentage}</IonText>
+           <IonLabel>Completed:</IonLabel>
+           <IonText>{task.completed}%</IonText>
         </IonItem>
         <IonItem>
            <IonLabel>Priority:</IonLabel>
@@ -66,20 +74,18 @@ const [task, setTask]= useState<TaskData | null>(null);
         </IonItem>
         <IonItem>
            <IonLabel>Assigned Date:</IonLabel>
-           <IonText>{task.assignedDate}</IonText>
+           <IonText>{task.assignDate}</IonText>
         </IonItem>
         <IonItem>
            <IonLabel>Assigned Deadline:</IonLabel>
-           <IonText>{task.assignedDeadline}</IonText>
-        </IonItem></> ) : (
+           <IonText>{task.deadLine}</IonText>
+        </IonItem></div> ) : (
           <div> no details</div>
         )}
         </IonCardContent>
       </IonCard>
-    </IonPage>
-    
+   </IonContent>
+   </IonPage>
    )
-
 };
-
 export default Details;
