@@ -23,6 +23,10 @@
     text-align: left;
     font-weight: bold;
     border-bottom: 2px solid #ddd; /* Border below header */
+} 
+table-body{
+    table-layout: fixed;
+    width: 100%;
 }
 
 /* Table Body */
@@ -35,7 +39,7 @@
 }
 
 .table tbody tr:hover {
-    background-color: #e0e0e0; /* Hover effect */
+    background-color: #f9fde4; /* Hover effect */
 }
 
 /* Table Cells */

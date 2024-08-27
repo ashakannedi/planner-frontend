@@ -35,7 +35,7 @@ const TaskbyUserid: React.FC = () => {
     }, []);
 
     const handleProjectClick = (id: string) => {
-        history.push(`/details/${id}`);
+        history.push(`/detailsbasedontaskid/${id}`);
     };
 
     return (
@@ -53,7 +53,7 @@ const TaskbyUserid: React.FC = () => {
                             <th>UserId</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table-body">
                         {tasks.length > 0 ? (
                             tasks.map(task => (
                                 <tr key={task.id}>

@@ -1,9 +1,9 @@
 /* Custom header style */
-.custom-header{
-    background-color: black;
+.head{
+    background-color: rgb(141, 90, 24);
 }
 .backkk{
-    background-color: #f0ebce;
+    background-color: aqua;
     text-align: center;
 }
 
@@ -44,7 +44,7 @@
     background-color: #f0ebce; /* Light background color for the form/card only */
     padding: 60px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    box-shadow: 0px 0px 10px rgba(223, 248, 133, 0.1); /* Soft shadow */
     overflow-y: auto; /* Enable vertical scrolling */
     height: 100%; /* Make sure it takes full height */
 
@@ -84,7 +84,7 @@
 .form-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid var(--ion-color-medium); /* Use Ionic color variable */
+    border: 1px solid black; /* Use Ionic color variable */
     border-radius: 8px;
     box-sizing: border-box;
 }
@@ -106,11 +106,14 @@
     box-sizing: border-box; /* Include padding in width calculation */
 }
 
-/* Percentage symbol styling */
-.percentage-symbol {
-    position: absolute;
-    right: 10px; /* Adjust this value as needed */
-    color: #000000; /* Adjust the color as needed */
-    pointer-events: none; /* Ensure the % symbol does not interfere with input */
-    white-space: nowrap; /* Prevent the symbol from wrapping */
+
+/* status-edit Ioninput elements in form-group */
+.status-edit{
+    text-align: center;
+}
+.status-save{
+   
+    text-align: right; /* Align text to the right */
+    width: 100%; /* Ensure the input takes up available width */
+    box-sizing: border-box; /* Include padding in width calculation */
 }

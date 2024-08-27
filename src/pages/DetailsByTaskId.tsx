@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchTaskById, updateTask, TaskData } from '../Service';
 import { useParams } from 'react-router';
 import { calendarOutline } from 'ionicons/icons';
-import './Details.css';
+import './DetailsByTaskId.css';
 
 const Details: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,6 +16,8 @@ const Details: React.FC = () => {
   const [updatedTask, setUpdatedTask] = useState<TaskData | null>(null);
   const [showStartDatePicker, setShowStartDatePicker] = useState(false);
   const [showEndDatePicker, setShowEndDatePicker] = useState(false);
+  const [activeDateField, setActiveDateField] = useState<string | null>(null);
+
 
   useEffect(() => {
     fetchTaskById(id, (err, data) => {
@@ -39,15 +41,15 @@ const Details: React.FC = () => {
   };
 
   const handleDateChange = (e: CustomEvent) => {
-    if (updatedTask) {
-      const name = e.detail.name;
+    if (updatedTask && activeDateField) {
       const value = e.detail.value;
       setUpdatedTask({
         ...updatedTask,
-        [name]: value,
+        [activeDateField]: value,
       });
     }
   };
+  
 
   const handleSave = () => {
     if (updatedTask) {
@@ -69,7 +71,7 @@ const Details: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader style={{ backgroundColor: '#f0ebce' }}>
+      <IonHeader className='head'>
         <IonToolbar className='backkk'>
           <IonTitle>Task Details</IonTitle>
         </IonToolbar>
@@ -98,65 +100,85 @@ const Details: React.FC = () => {
                 </IonItem>
 
                 <IonItem className="form-group">
-               <IonLabel>Start Date:</IonLabel>
-               <IonText>{task.startDate}</IonText>
-               {isEditing && (
-                 <>
-                   <IonButton onClick={() => setShowStartDatePicker(true)}>
-                     <IonIcon icon={calendarOutline} />
-                   </IonButton>
-                   <IonModal isOpen={showStartDatePicker}>
-                     <IonDatetime
-                       name="startDate"
-                       value={updatedTask?.startDate}
-                       onIonChange={handleDateChange}
-                     />
-                     <IonButton onClick={() => setShowStartDatePicker(false)}>
-                       Done
-                     </IonButton>
-                   </IonModal>
-                 </>
-               )}
-             </IonItem>
+                  <IonLabel>Start Date:</IonLabel>
+                  {isEditing ? (
+                    <>
+                      <IonText>{updatedTask?.startDate || 'No date selected'}</IonText>
+                      <IonButton onClick={() => {
+                        setActiveDateField('startDate');
+                        setShowStartDatePicker(true);
+                      }}>
+                        <IonIcon icon={calendarOutline} />
+                      </IonButton>
+                      <IonModal isOpen={showStartDatePicker} onDidDismiss={() => setShowStartDatePicker(false)}>
+                        <IonDatetime
+                          value={updatedTask?.startDate || ''}
+                          onIonChange={handleDateChange}
+                        />
+                        <IonButton onClick={() => setShowStartDatePicker(false)}>
+                          Done
+                        </IonButton>
+                      </IonModal>
+                    </>
+                  ) : (
+                    <IonText>{task.startDate || 'No date selected'}</IonText>
+                  )}
+                </IonItem>
              
-             <IonItem className="form-group">
-               <IonLabel>End Date:</IonLabel>
-               <IonText>{task.endDate}</IonText>
-               {isEditing && (
-                 <>
-                   <IonButton onClick={() => setShowEndDatePicker(true)}>
-                     <IonIcon icon={calendarOutline} />
-                   </IonButton>
-                   <IonModal isOpen={showEndDatePicker}>
-                     <IonDatetime
-                       name="endDate"
-                       value={updatedTask?.endDate}
-                       onIonChange={handleDateChange}
-                     />
-                     <IonButton onClick={() => setShowEndDatePicker(false)}>
-                       Done
-                     </IonButton>
-                   </IonModal>
-                 </>
-               )}
-             </IonItem>
+              <IonItem className="form-group">
+                <IonLabel>End Date:</IonLabel>
+                {isEditing ? (
+                  <>
+                    <IonText>{updatedTask?.endDate || 'No date selected'}</IonText>
+                    <IonButton onClick={() => {
+                      setActiveDateField('endDate');
+                      setShowEndDatePicker(true);
+                    }}>
+                      <IonIcon icon={calendarOutline} />
+                    </IonButton>
+                    <IonModal isOpen={showEndDatePicker} onDidDismiss={() => setShowEndDatePicker(false)}>
+                      <IonDatetime
+                        value={updatedTask?.endDate || ''}
+                        onIonChange={handleDateChange}
+                      />
+                      <IonButton onClick={() => setShowEndDatePicker(false)}>
+                        Done
+                      </IonButton>
+                    </IonModal>
+                  </>
+                ) : (
+                  <IonText>{task.endDate || 'No date selected'}</IonText>
+                )}
+              </IonItem>
 
              <IonItem className="form-group">
-               <IonLabel>Status:</IonLabel>
-               <IonText>{task.status}</IonText>
-             </IonItem>
+                <IonLabel>Status:</IonLabel>
+                {isEditing ? (
+                  <IonInput className="status-edit"
+                    name="status"
+                    value={updatedTask?.status || ''}
+                    onIonChange={(e: CustomEvent) => handleInputChange(e as any)}
+                    placeholder="Enter status"
+                  />
+                ) : (
+                  <IonText className="status-save">{task.status}</IonText> // The status will be displayed on the right after saving
+                )}
+              </IonItem>
              
               <IonItem className="form-group">
                 <IonLabel>Percentage:</IonLabel>
                 <div className="percentage-input-container">
                   {isEditing ? (
-                    <IonInput
-                      name="percentage"
-                      type="text" // Change to number to ensure proper numeric input
-                      value={updatedTask?.completed || ''} // Ensure value is not undefined
-                      onIonChange={(e: CustomEvent) => handleInputChange(e as any)}
-                      className="percentage-input"
-                    />
+                    <IonInput className="status-edit"
+                    name="completed" // Ensure this matches the key used in your TaskData model
+                    type="number"
+                    min="0"
+                    max="100"
+                    
+                    value={updatedTask?.completed || ''} 
+                    onIonChange={(e: CustomEvent) => handleInputChange(e as any)}
+                    // className="percentage-input"
+                  />
                   ) : (
                     <IonText className="percentage-input">{task.completed}%</IonText>
                   )}
