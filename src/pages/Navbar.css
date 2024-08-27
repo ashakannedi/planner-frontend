@@ -1,0 +1,8 @@
+.navbar {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line if necessary */
+    
+    padding: 10px;
+    position: fixed;
+  }

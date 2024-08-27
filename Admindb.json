@@ -1,0 +1,29 @@
+{
+    "Details":[
+    {
+      "id": "01",
+      "name": "ram",
+      "title": "developer",
+      "description": "Description ",
+      "startDate": "2024-08-20",
+      "endDate": "2024-08-25",
+      "status": "Started",
+      "percentage": "50%",
+      "priority": "High",
+      "assignedDate": "2024-08-18",
+      "assignedDeadline": "2024-08-22"
+    },
+    {
+      "id": "02",
+      "name": "dev",
+      "title": "frontend",
+      "description": "Description 2",
+      "startDate": "2024-08-22",
+      "endDate": "2024-08-30",
+      "status": "In Progress",
+      "percentage": "30%",
+      "priority": "Medium",
+      "assignedDate": "2024-08-20",
+      "assignedDeadline": "2024-08-28"
+    }
+  ]}
