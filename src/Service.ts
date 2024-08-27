@@ -12,10 +12,10 @@ export interface TaskData {
   startDate: string;
   endDate: string;
   status: string;
-  percentage: string;
+  completed: string;
   priority: string;
-  assignedDate: string;
-  assignedDeadline: string;
+  assignDate: string;
+  deadLine: string;
 }
 
 // Fetch all tasks with callback

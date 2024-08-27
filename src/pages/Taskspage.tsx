@@ -57,7 +57,7 @@ const Taskspage: React.FC = () => {
                 <td>{task.description}</td>
                 <td>{task.status}</td>
                 <td>{task.priority}</td>
-                <td>{task.assignedDeadline}</td>
+                <td>{task.deadLine}</td>
               </tr>
             ))
           ) : (
