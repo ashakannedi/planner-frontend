@@ -1,0 +1,173 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex; /* Always horizontal layout */
+  align-items: center;
+  margin-top: 15px;
+  width: 90%;
+  max-width: 800px; /* Adjusted for a more compact appearance */
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* To prevent content overflow */
+}
+
+.logo-container {
+  flex: 1; /* Flex-grow to take up space on the left */
+  text-align: center;
+  padding: 20px; /* Adjusted padding */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px; /* Adjusted minimum width */
+  max-width: 300px; /* Adjusted maximum width */
+}
+
+.logo-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.login-form {
+  flex: 2; /* Flex-grow to take up more space on the right */
+  padding: 20px;
+  width: 100%;
+  max-width: 400px; /* Adjusted for a more compact form */
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  position: relative;
+  width: 100%;
+}
+
+.input-item input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  outline: none;
+  font-size: 1em;
+}
+
+.icon {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 10px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.center {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.register-link {
+  text-align: center;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+.underline-input::placeholder {
+  transition: transform 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  color: #aaa;
+  font-weight: 400;
+  position: absolute;
+}
+
+.underline-input:focus::placeholder {
+  transform: translateY(-10px);
+  font-size: 11px;
+  color: #000;
+}
+
+/* Media Queries for Responsiveness */
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .logo-container {
+    width: 100%; /* Make logo container full width */
+    padding: 10px;
+    min-width: 0; /* Remove minimum width to fit smaller screens */
+    max-width: none; /* Allow it to take up full width if needed */
+  }
+
+  .login-form {
+    width: 100%; /* Make form full width */
+    padding: 10px;
+  }
+
+  .input-item {
+    margin-bottom: 10px;
+  }
+
+  button[type="submit"] {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container {
+    padding: 10px;
+  }
+
+  .login-form {
+    padding: 5px;
+  }
+
+  .input-item {
+    margin-bottom: 5px;
+  }
+
+  button[type="submit"] {
+    padding: 5px;
+  }
+}

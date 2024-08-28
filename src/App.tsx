@@ -38,6 +38,7 @@ import Usertask from './pages/Usertask';
 import TaskbyUserid from './pages/TaskbyUserid';
 import Task from './pages/Task';
 import Project from'./pages/Project';
+import Loginform from './pages/Loginform';
 
 setupIonicReact();
 
@@ -56,6 +57,7 @@ const App = () => {
           <Route path="/details/:id" component={Details}><Details/></Route>
           <Route path="/home"><Home/></Route>
           <Route path="/register" component={Registration} />
+          <Route path="/login" component={Loginform} />
           <Route path="/usertask" component={Task}/>
           <Route path="/adduser"component={Adduser}/>
           <Route path="/userproject" component={Project}/>
