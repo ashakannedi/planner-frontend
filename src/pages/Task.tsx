@@ -9,11 +9,7 @@ function Task() {
       <form>
         <h2>Task Form</h2>
         <div className="form-container">
-          <div className="form-group">
-            <IonIcon icon={documentTextOutline} className="input-icon" />
-            <input type="text" id="id" name="id" required placeholder=" " />
-            <label htmlFor="id">Id</label>
-          </div>
+         
 
           <div className="form-group">
             <IonIcon icon={documentTextOutline} className="input-icon" />

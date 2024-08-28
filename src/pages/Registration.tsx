@@ -24,7 +24,7 @@ export default function Registration() {
             return; // Stop further execution
         }
         try {
-            const response = await axios.post("http://localhost:8080/userdetails/register", {
+            const response = await axios.post("http://localhost:8080/userDetails/register", {
                 name,
                 email,
                 password,
