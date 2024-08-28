@@ -1,13 +1,10 @@
 import './Registration.css';
-import { IonIcon } from '@ionic/react';
+import { IonContent, IonIcon, IonPage } from '@ionic/react';
 import { personCircleOutline, mailOutline, lockClosedOutline, callOutline, personOutline } from 'ionicons/icons';
 import axios from 'axios';
 import { useState } from 'react';
 import React from 'react';
-
-
-export default function Registration() {
-
+const Registration:React.FC=() =>{
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,7 +13,6 @@ export default function Registration() {
     const [role, setRole] = useState("");
     const [gender, setGender] = useState("");
     const [loading, setLoading] = useState(false);
-
     async function handleSubmit(event: React.FormEvent) {  // Type 'event' as React.FormEvent
         event.preventDefault();
         if (password !== confirmPassword) {
@@ -51,6 +47,8 @@ export default function Registration() {
         }
     }
     return (
+       <IonPage>
+        <IonContent>
         <div className='registration-container-R' >
             <div className='image-container-R'>
                 <img src="FourGID.jpg" alt="Registration" className="left-image-R" />
@@ -114,7 +112,6 @@ export default function Registration() {
                             <select id="role" name="role" required className="underline-input"  onChange={(event)=>{setRole(event.target.value)}}>
                             <option value="" disabled hidden
                             selected>Select Role</option>
-
                                 <option value="Admin">Admin</option>
                                 <option value="User">User</option>
                                 <option value="Guest">Guest</option>
@@ -134,11 +131,14 @@ export default function Registration() {
                         </div>
                     </div>
                     <div className="button-container-R">
-                        <button type="submit" className="btn btn-primary">Register</button>
+                    <button type="submit" className="btn btn-primary">Register</button>
                     <button type="button" className="btn btn-secondary">SignIn</button>
                     </div>
                 </form>
             </div>
         </div>
+        </IonContent>
+        </IonPage>
     );
 }
+export default Registration;
