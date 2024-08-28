@@ -53,26 +53,18 @@ const TaskbyUserid: React.FC = () => {
                             <th>UserId</th>
                         </tr>
                     </thead>
-                    <tbody className="table-body">
+                    <tbody className="table-body" >
                         {tasks.length > 0 ? (
                             tasks.map(task => (
-                                <tr key={task.id}>
-                                    <td>
-                                        <IonButton onClick={() => handleProjectClick(task.id)} fill="clear">
-                                            {task.id}
-                                        </IonButton>
-                                    </td>
-                                    <td>{task.title}</td>
-                                    <td>{task.description}</td>
-                                    <td>{task.status}</td>
-                                    <td>{task.priority}</td>
-                                    <td>{task.deadLine}</td>
-                                    <td>
-                                        <IonButton onClick={() => handleProjectClick(task.id)} fill="clear">
-                                            {task.userId}
-                                        </IonButton>
-                                    </td>
-                                </tr>
+                                <tr key={task.id} onClick={() => handleProjectClick(task.id)} style={{ cursor: 'pointer' }}>
+                                <td>{task.id}</td>
+                                <td>{task.title}</td>
+                                <td>{task.description}</td>
+                                <td>{task.status}</td>
+                                <td>{task.priority}</td>
+                                <td>{task.deadLine}</td>
+                                <td>{task.userId}</td>
+                            </tr>
                             ))
                         ) : (
                             <tr>
