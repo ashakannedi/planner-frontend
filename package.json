@@ -17,6 +17,7 @@
     "@types/react-router-dom": "^5.1.7",
     "axios": "^1.7.4",
     "history": "^4.9.0",
+    "ionic2-calendar": "^2.5.0",
     "ionicons": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

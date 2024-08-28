@@ -26,6 +26,7 @@ const Taskspage: React.FC = () => {
   };
   return (
     <IonPage>
+<<<<<<< HEAD
         <IonHeader>
           <IonToolbar>
             <IonTitle>Task Details</IonTitle>
@@ -41,6 +42,40 @@ const Taskspage: React.FC = () => {
                 <th style={{ padding: '12px' }}>Status</th>          
                 <th style={{ padding: '12px' }}>Priority</th>
                 <th style={{ padding: '12px' }}> deadLine</th>                 
+=======
+
+      <table style={{width: '100%',
+  borderCollapse: 'collapse',
+  marginTop: '16px'}}>
+
+        <thead style={{ 
+            padding: '12px', 
+            textAlign: 'left',
+            fontWeight: 'bold',}}>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th> Deadline</th>                 
+          </tr>
+        </thead>
+        <tbody>
+          {tasks.length > 0 ? (
+            tasks.map(task => (
+              <tr key={task.id}>
+                <td>
+                  <IonButton onClick={() => handleClick(task.id)} fill="clear">
+                    {task.id}
+                  </IonButton>
+                </td>
+                <td>{task.title}</td>
+                <td>{task.description}</td>
+                <td>{task.status}</td>
+                <td>{task.priority}</td>
+                <td>{task.deadLine}</td>
+>>>>>>> gandhi-edit
               </tr>
               </thead>
             <tbody>

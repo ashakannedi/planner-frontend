@@ -1,7 +1,7 @@
 
 
 import React, { useState } from 'react';
-import { IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, } from '@ionic/react';
+import { IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, IonDatetime} from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
 import './Home.css';
 import axios from 'axios';
@@ -15,45 +15,27 @@ interface TaskData {
   startDate: string;
   endDate: string;
   status: string;
-  percentage: string;
+  completed: string;
   priority: string;
-  assignedDate: string;
-  assignedDeadline: string;
+  assignDate: string;
+  deadLine: string;
 }
 
 const Home: React.FC = () => {
   const [tasks, setTasks] = useState<TaskData[]>([
-    {
-      id: '01',
-      name: 'Dev',
-      title: 'Frontend',
-      description: 'Development of visual and interactive elements...',
-      startDate: '21-08-2024',
-      endDate: '23-09-2024',
-      status: 'Started',
-      percentage: '10%',
-      priority: 'High',
-      assignedDate: '21-08-2024',
-      assignedDeadline: '15-09-2024',
-    },
-    {
-      id: '02',
-      name: 'Devi',
-      title: 'Frontend Engineer',
-      description: 'Development of visual and interactive elements...',
-      startDate: '20-08-2024',
-      endDate: '20-09-2024',
-      status: 'Started',
-      percentage: '20%',
-      priority: 'High',
-      assignedDate: '19-08-2024',
-      assignedDeadline: '23-09-2024',
-    }
+    
   ]);
 
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [editedTask, setEditedTask] = useState<Partial<TaskData>>({});
   const [newTask, setNewTask] = useState<Partial<TaskData>>({});
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState({ modal: false, field: '' });
+  const[startdate,setStartDate] = useState(null);
+  const[enddate,setEndDate] = useState(null);
+  const[assignDate,setAssignedDate] = useState(null);
+  const[assigneddeadline,setAssignedDeadline] = useState(null)
+
   const statusOptions = ['Started', 'In Progress', 'Completed'];
   const priorityOptions = ['High', 'Medium', 'Low'];
 
@@ -94,6 +76,10 @@ const Home: React.FC = () => {
       }));
     }
   };
+  const handleDateChange = (event: CustomEvent) => {
+    setSelectedDate(event.detail.value as string);
+  };
+
 
   const handlePriorityChange = (event: CustomEvent) => {
     const value = event.detail.value;
@@ -175,10 +161,10 @@ const Home: React.FC = () => {
                     <td><IonInput name="startDate" value={editedTask.startDate || ''} onIonInput={handleInputChange} /></td>
                     <td><IonInput name="endDate" value={editedTask.endDate || ''} onIonInput={handleInputChange} /></td>
                     <td><IonInput name="status" value={editedTask.status || ''} onIonInput={handleInputChange} /></td>
-                    <td><IonInput name="percentage" value={editedTask.percentage || ''} onIonInput={handleInputChange} /></td>
+                    <td><IonInput name="percentage" value={editedTask.completed || ''} onIonInput={handleInputChange} /></td>
                     <td><IonInput name="priority" value={editedTask.priority || ''} onIonInput={handleInputChange} /></td>
-                    <td><IonInput name="assignedDate" value={editedTask.assignedDate || ''} onIonInput={handleInputChange} /></td>
-                    <td><IonInput name="assignedDeadline" value={editedTask.assignedDeadline || ''} onIonInput={handleInputChange} /></td>
+                   <td><IonDatetime name="assignedDate" value={editedTask.assignDate || ''} onIonChange={ (e:CustomEvent) =>handleDateChange} /></td> 
+                    <td><IonDatetime name="assignedDeadline" value={editedTask.deadLine || ''} onIonChange={(e:CustomEvent)=> handleDateChange} /></td> 
                   </>
                 ) : (
                   <>
@@ -188,10 +174,10 @@ const Home: React.FC = () => {
                     <td>{task.startDate}</td>
                     <td>{task.endDate}</td>
                     <td>{task.status}</td>
-                    <td>{task.percentage}</td>
+                    <td>{task.completed}</td>
                     <td>{task.priority}</td>
-                    <td>{task.assignedDate}</td>
-                    <td>{task.assignedDeadline}</td>
+                    <td>{task.assignDate}</td>
+                    <td>{task.deadLine}</td>
                   </>
                 )}
                 <td>
@@ -226,7 +212,7 @@ const Home: React.FC = () => {
                   ))}
                 </IonSelect>
               </td>
-              <td><IonInput name="percentage" value={newTask.percentage || ''} onIonInput={handleNewTaskChange} placeholder="Percentage" /></td>
+              <td><IonInput name="percentage" value={newTask.completed || ''} onIonInput={handleNewTaskChange} placeholder="Percentage" /></td>
               <td>
                 <IonSelect
                   name="priority"
@@ -240,8 +226,8 @@ const Home: React.FC = () => {
                   ))}
                 </IonSelect>
               </td>
-              <td><IonInput name="assignedDate" value={newTask.assignedDate || ''} onIonInput={handleNewTaskChange} placeholder="Assigned Date" /></td>
-              <td><IonInput name="assignedDeadline" value={newTask.assignedDeadline || ''} onIonInput={handleNewTaskChange} placeholder="Assigned Deadline" /></td>
+              <td><IonInput name="assignedDate" value={newTask.assignDate || ''} onIonInput={handleNewTaskChange} placeholder="Assigned Date" /></td>
+              <td><IonInput name="assignedDeadline" value={newTask.deadLine || ''} onIonInput={handleNewTaskChange} placeholder="Assigned Deadline" /></td>
               <td>
                 <IonButton onClick={addNewTask}>Add</IonButton>
               </td>
