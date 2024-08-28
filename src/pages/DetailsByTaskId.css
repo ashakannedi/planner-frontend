@@ -81,10 +81,11 @@
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"],
+.form-group input[type="number"],
 .form-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid black; /* Use Ionic color variable */
+    border: 1px solid rgb(230, 230, 230); /* Use Ionic color variable */
     border-radius: 8px;
     box-sizing: border-box;
 }
