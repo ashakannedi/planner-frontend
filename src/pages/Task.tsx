@@ -5,6 +5,17 @@ import './Task.css';
 
 const Task:React.FC = () => {
   return (
+    <div className="task-form">
+      <form>
+        <h2>Task Form</h2>
+        <div className="form-container">
+         
+
+          <div className="form-group">
+            <IonIcon icon={documentTextOutline} className="input-icon" />
+            <input type="text" id="name" name="name" required placeholder=" " />
+            <label htmlFor="name">Name</label>
+          </div>
     <IonPage>
       <IonContent>
         <div className="task-form">

@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Project.css';
 import { IonContent, IonIcon,IonInput,IonPage } from '@ionic/react';
 import { clipboardOutline, personOutline } from 'ionicons/icons';
+import axios from 'axios';
 
 function Project() {
+    // State variables for form data
+    const [projectId, setProjectId] = useState('');
+    const [projectName, setProjectName] = useState('');
+    const [userId, setUserId] = useState('');
+
+    // Handle form submission
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const projectData = {
+            // Use the state variable value
+            projectName: projectName, // Use the state variable value
+            userId: userId, // Use the state variable value
+        };
+
+        try {
+            const response = await axios.post('http://localhost:8080/projects', projectData);
+            console.log("Project saved successfully:", response.data);
+            // Reset form fields after successful submission
+            setProjectId('');
+            setProjectName('');
+            setUserId('');
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error("Error saving project:", error.response?.data || error.message);
+            } else {
+                console.error("Unexpected error:", error);
+            }
+        }
+    };
     return (
         <IonPage>
         <IonContent>
