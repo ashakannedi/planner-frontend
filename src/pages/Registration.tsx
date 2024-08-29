@@ -4,9 +4,11 @@ import { personCircleOutline, mailOutline, lockClosedOutline, callOutline, perso
 import axios from 'axios';
 import { useState } from 'react';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 
-export default function Registration() {
+const Registration: React.FC = () => {
+  
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -50,6 +52,7 @@ export default function Registration() {
             setLoading(false);
         }
     }
+    
     return (
         <div className='registration-container-R' >
             <div className='image-container-R'>
@@ -135,10 +138,12 @@ export default function Registration() {
                     </div>
                     <div className="button-container-R">
                         <button type="submit" className="btn btn-primary">Register</button>
-                    <button type="button" className="btn btn-secondary">SignIn</button>
+                        <button type="button" className="btn btn-secondary" >Sign In</button>
                     </div>
                 </form>
             </div>
         </div>
     );
 }
+
+export default Registration;

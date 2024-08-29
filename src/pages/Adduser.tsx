@@ -4,8 +4,14 @@ import { personCircleOutline, mailOutline, lockClosedOutline, callOutline, perso
 import axios from 'axios';
 import { useState } from 'react';
 import React from 'react';
+import { useHistory } from 'react-router';
 
 function Adduser(){
+    const history = useHistory();
+  
+    const handleSignIn = () => {
+      history.push('/login'); // Navigate to the login page
+    };
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -22,7 +28,7 @@ function Adduser(){
             return; // Stop further execution
         }
         try {
-            const response = await axios.post("http://localhost:8080/userdetails/register", {
+            const response = await axios.post("http://localhost:8080/userDetails/register", {
                 name,
                 email,
                 password,
@@ -134,7 +140,7 @@ function Adduser(){
                     </div>
                     <div className="button-container-item">
                         <button type="submit" className="btn btn-primary">Register</button>
-                    <button type="button" className="btn btn-secondary">SignIn</button>
+                        <button type="button" className="btn btn-secondary" onClick={handleSignIn}>Sign In</button>
                     </div>
                 </form>
             </div>

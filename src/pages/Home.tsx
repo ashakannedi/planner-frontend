@@ -132,17 +132,30 @@ const Home: React.FC = () => {
     setTasks([...tasks, { ...newTask, id: newTaskId } as TaskData]);
     setNewTask({}); // Clear new task input fields
   };
-
+ 
   const history = useHistory();
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:8080/userDetails/logout", {}, { withCredentials: true });
-      history.push('/login?logout=true'); // Redirect to login page
+      // Send the logout request
+      const response = await axios.post("http://localhost:8080/userDetails/logout", {}, { withCredentials: true });
+  
+      // Log or display the success message
+      console.log(response.data); // For debugging, remove in production
+  
+      // Optionally display a message before redirecting (using a state or alert)
+      alert("Logout successful");
+  
+      // Redirect to login page with query parameter
+      history.push('/login?logout=true');
     } catch (error) {
       console.error("Error during logout:", error);
+  
+      // Optionally display an error message to the user
+      alert("Logout failed. Please try again.");
     }
   };
+  
 
   return (
     <IonPage>
