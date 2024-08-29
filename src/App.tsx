@@ -6,7 +6,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Taskspage from './pages/Taskspage';
 import Projects from './pages/Projects';
-//import Details from './pages/Details';
+import Details from './pages/Details';
 import DetailsByTaskId from './pages/DetailsByTaskId';
 import Navbar from './pages/Nav';
 /* Core CSS required for Ionic components to work properly */
@@ -55,7 +55,7 @@ const App = () => {
           <Route path="/projects"><Projects/></Route>
           <Route path="/taskbyuserid"><TaskbyUserid/></Route>
           <Route path="/taskspage/:id" component={Taskspage}></Route> 
-          {/* <Route path="/details/:id" component={Details}><Details/></Route> */}
+          <Route path="/details/:id" component={Details}><Details/></Route>
           <Route path="/detailsbasedontaskid/:id" component={DetailsByTaskId}><DetailsByTaskId/></Route>
           <Route path="/home"><Home/></Route>
           <Route path="/register" component={Registration} />
