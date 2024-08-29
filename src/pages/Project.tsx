@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Project.css';
-import { IonContent, IonIcon,IonInput,IonPage } from '@ionic/react';
+import { IonIcon } from '@ionic/react';
 import { clipboardOutline, personOutline } from 'ionicons/icons';
 import axios from 'axios';
 
@@ -36,34 +36,40 @@ function Project() {
         }
     };
     return (
-        <IonPage>
-        <IonContent>
-            <div className="project-container-field">
-                <form className="project-form-field">
-                    <h2>Project Details</h2>
-                    <div className="form-group-field">
-                        <IonIcon icon={clipboardOutline} className="input-icon-field bright-icon" />
-                        <input type="text" id="projectId" required placeholder=" " />
-                        <label htmlFor="projectId">Project Id</label>
-                    </div>
-                    <div className="form-group-field">
-                        <IonIcon icon={clipboardOutline} className="input-icon-field bright-icon" />
-                        <input type="text" id="projectName" required placeholder=" " />
-                        <label htmlFor="projectName">Project Name</label>
-                    </div>
-                    <div className="form-group-field">
-                        <IonIcon icon={personOutline} className="input-icon-field bright-icon" />
-                        <input type="text" id="userId" required placeholder=" " />
-                        <label htmlFor="userId">User Id</label>
-                    </div>
-                    <div className="button-container-field">
-                        <button type="submit" className="btn-primary">Save</button>
-                        <button type="button" className="btn-secondary">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </IonContent>
-        </IonPage>
+        <div className="project-container-field">
+            <form className="project-form-field" onSubmit={handleSubmit}>
+                <h2>Project Details</h2>
+               
+                <div className="form-group-field">
+                    <IonIcon icon={clipboardOutline} className="input-icon-field bright-icon" />
+                    <input 
+                        type="text" 
+                        id="projectName" 
+                        required 
+                        placeholder=" " 
+                        value={projectName}
+                        onChange={(e) => setProjectName(e.target.value)} 
+                    />
+                    <label htmlFor="projectName">Project Name</label>
+                </div>
+                <div className="form-group-field">
+                    <IonIcon icon={personOutline} className="input-icon-field bright-icon" />
+                    <input 
+                        type="text" 
+                        id="userId" 
+                        required 
+                        placeholder=" " 
+                        value={userId}
+                        onChange={(e) => setUserId(e.target.value)} 
+                    />
+                    <label htmlFor="userId">User Id</label>
+                </div>
+                <div className="button-container-field">
+                    <button type="submit" className="btn-primary">Save</button>
+                    <button type="button" className="btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
     );
 }
 

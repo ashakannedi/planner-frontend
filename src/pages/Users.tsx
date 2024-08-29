@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IonIcon, IonModal, IonButton, IonInput, IonPage, IonContent } from '@ionic/react';
+import { IonIcon, IonModal, IonButton, IonInput } from '@ionic/react';
 import { pencilOutline, trashOutline } from 'ionicons/icons';
 import axios from 'axios';
 import './Users.css';
@@ -15,15 +15,8 @@ interface User {
   gender: string;
 }
 
-const Users:React.FC=()=> {
-  const [userData, setUserData] = useState<User[]>([
-    // Initial user data
-  ]);
-  
-=======
 function Users() {
   const [userData, setUserData] = useState<User[]>([]);
->>>>>>> Registration/Tiru
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -90,8 +83,6 @@ function Users() {
   };
 
   return (
-    <IonPage>
-      <IonContent>
     <div className="users-container">
       <table className="users-table">
         <thead>
@@ -171,7 +162,7 @@ function Users() {
           <IonButton onClick={() => setIsModalOpen(false)}>Cancel</IonButton>
         </div>
       </IonModal>
-    </div></IonContent></IonPage>
+    </div>
   );
 }
 

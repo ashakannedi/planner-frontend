@@ -1,5 +1,5 @@
 import './Adduser.css';
-import { IonIcon ,IonPage,IonContent} from '@ionic/react';
+import { IonIcon } from '@ionic/react';
 import { personCircleOutline, mailOutline, lockClosedOutline, callOutline, personOutline } from 'ionicons/icons';
 import axios from 'axios';
 import { useState } from 'react';
@@ -50,8 +50,6 @@ function Adduser(){
     }
 
     return (
-        <IonPage>
-        <IonContent>
         <div className='User-container' >
             <div className='image-container-item'>
                 <img src="Employee.jpg" alt="User From" className="left-image-item" />
@@ -141,8 +139,6 @@ function Adduser(){
                 </form>
             </div>
         </div>
-        
-        </IonContent></IonPage>
     );
 }
 export default Adduser;
