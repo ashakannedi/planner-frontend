@@ -16,7 +16,14 @@ interface User {
 }
 
 const Users:React.FC=()=> {
+  const [userData, setUserData] = useState<User[]>([
+    // Initial user data
+  ]);
+  
+=======
+function Users() {
   const [userData, setUserData] = useState<User[]>([]);
+>>>>>>> Registration/Tiru
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 

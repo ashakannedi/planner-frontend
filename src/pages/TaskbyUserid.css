@@ -9,7 +9,7 @@
 .table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #f9f9f9; /* Light background color */
+    
 }
 
 /* Table Header */
@@ -34,9 +34,7 @@ table-body{
     border-bottom: 1px solid #ddd; /* Border between rows */
 }
 
-.table tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Alternate row color */
-}
+
 
 .table tbody tr:hover {
     background-color: #f9fde4; /* Hover effect */

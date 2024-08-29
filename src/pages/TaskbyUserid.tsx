@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { IonPage, IonButton } from "@ionic/react";
+import { IonPage, IonButton, IonContent } from "@ionic/react";
 import axios from "axios";
 import { useHistory } from "react-router";
 import './TaskbyUserid.css'; // Import the CSS file
@@ -40,6 +40,7 @@ const TaskbyUserid: React.FC = () => {
 
     return (
         <IonPage>
+            <IonContent>
             <div className="table-container">
                 <table className="table">
                     <thead>
@@ -73,7 +74,7 @@ const TaskbyUserid: React.FC = () => {
                         )}
                     </tbody>
                 </table>
-            </div>
+            </div></IonContent>
         </IonPage>
     );
 }
