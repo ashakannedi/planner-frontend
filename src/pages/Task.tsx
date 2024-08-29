@@ -274,7 +274,7 @@ function Task() {
               value={formData.project.id}
               onChange={handleChange}
               required
-              placeholder=" Project ID"
+              placeholder=" "
             />
             <label htmlFor="projectId">Project Id</label>
             
@@ -289,7 +289,7 @@ function Task() {
               value={formData.userDetails.id}
               onChange={handleChange}
               required
-              placeholder="User ID "
+              placeholder=" "
             />
             <label htmlFor="userId">User Id</label>
           </div>
