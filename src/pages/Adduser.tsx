@@ -4,6 +4,7 @@ import { personCircleOutline, mailOutline, lockClosedOutline, callOutline, perso
 import axios from 'axios';
 import { useState } from 'react';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Adduser(){
     const [name, setName] = useState("");
@@ -14,6 +15,7 @@ function Adduser(){
     const [role, setRole] = useState("");
     const [gender, setGender] = useState("");
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
 
     async function handleSubmit(event: React.FormEvent) {  // Type 'event' as React.FormEvent
         event.preventDefault();
@@ -48,6 +50,9 @@ function Adduser(){
             setLoading(false);
         }
     }
+     const handleLoginClick = () => {
+         history.push('/login'); // Replace '/loginform' with the actual route path
+     };
 
     return (
         <div className='User-container' >
@@ -134,7 +139,8 @@ function Adduser(){
                     </div>
                     <div className="button-container-item">
                         <button type="submit" className="btn btn-primary">Register</button>
-                    <button type="button" className="btn btn-secondary">SignIn</button>
+                        <button type="button" className="btn btn-secondary" onClick={handleLoginClick}>Login</button>
+
                     </div>
                 </form>
             </div>

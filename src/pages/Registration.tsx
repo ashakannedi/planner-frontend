@@ -4,6 +4,8 @@ import { personCircleOutline, mailOutline, lockClosedOutline, callOutline, perso
 import axios from 'axios';
 import { useState } from 'react';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 const Registration:React.FC=() =>{
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -13,6 +15,7 @@ const Registration:React.FC=() =>{
     const [role, setRole] = useState("");
     const [gender, setGender] = useState("");
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
     async function handleSubmit(event: React.FormEvent) {  // Type 'event' as React.FormEvent
         event.preventDefault();
         if (password !== confirmPassword) {
@@ -46,6 +49,9 @@ const Registration:React.FC=() =>{
             setLoading(false);
         }
     }
+    const handleLoginClick = () => {
+             history.push('/login'); // Replace '/loginform' with the actual route path
+         };
     return (
        <IonPage>
         <IonContent>
@@ -132,7 +138,8 @@ const Registration:React.FC=() =>{
                     </div>
                     <div className="button-container-R">
                     <button type="submit" className="btn btn-primary">Register</button>
-                    <button type="button" className="btn btn-secondary">SignIn</button>
+                    <button type="button" className="btn btn-secondary" onClick={handleLoginClick}>Login</button>
+
                     </div>
                 </form>
             </div>
