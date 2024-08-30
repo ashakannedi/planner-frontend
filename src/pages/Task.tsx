@@ -5,7 +5,7 @@ import './Task.css';
 
 const Task:React.FC = () => {
   return (
-    <IonPage>
+    <>
       <IonContent>
         <div className="task-form">
         <form>
@@ -110,7 +110,7 @@ const Task:React.FC = () => {
         </form>
         </div>
     </IonContent>
-    </IonPage>
+    </>
   );
 }
 

@@ -47,7 +47,7 @@ const Registration:React.FC=() =>{
         }
     }
     return (
-       <IonPage>
+       <>
         <IonContent>
         <div className='registration-container-R' >
             <div className='image-container-R'>
@@ -138,7 +138,7 @@ const Registration:React.FC=() =>{
             </div>
         </div>
         </IonContent>
-        </IonPage>
+        </>
     );
 }
 export default Registration;

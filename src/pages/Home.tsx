@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import { IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, IonDatetime} from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
@@ -76,8 +74,19 @@ const Home: React.FC = () => {
       }));
     }
   };
-  const handleDateChange = (event: CustomEvent) => {
-    setSelectedDate(event.detail.value as string);
+  const handleDateChange = (e: CustomEvent, field: keyof TaskData) => {
+    const value = e.detail.value as string;
+    if (editIndex !== null) {
+      setEditedTask(prevState => ({
+        ...prevState,
+        [field]: value,
+      }));
+    } else {
+      setNewTask(prevState => ({
+        ...prevState,
+        [field]: value,
+      }));
+    }
   };
 
 
@@ -130,7 +139,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <IonPage>
+   
       <IonContent>
         <table className="my-table">
           <thead>
@@ -238,7 +247,7 @@ const Home: React.FC = () => {
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </IonContent>
-    </IonPage>
+   
   );
 };
 

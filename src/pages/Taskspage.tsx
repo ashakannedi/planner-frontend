@@ -25,7 +25,7 @@ const Taskspage: React.FC = () => {
     history.push(`/details/${taskId}`);
   };
   return (
-    <IonPage>
+    <>
         <IonHeader>
           <IonToolbar>
             <IonTitle>Task Details</IonTitle>
@@ -63,7 +63,7 @@ const Taskspage: React.FC = () => {
             </tbody>
           </table>
         </IonContent>
-    </IonPage>
+    </>
   );
 };
 

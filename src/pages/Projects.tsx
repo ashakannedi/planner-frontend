@@ -28,7 +28,7 @@ const Projects:React.FC = () =>{
     };
 
     return (
-        <IonPage>
+            <>
             <IonHeader>
                 <IonToolbar>
                     <IonTitle>Project Details</IonTitle>
@@ -79,7 +79,7 @@ const Projects:React.FC = () =>{
             ))}
         </div>
     </IonContent>
-    </IonPage>
+    </>
     );
 };
 export default Projects;

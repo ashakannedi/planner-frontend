@@ -18,8 +18,8 @@ const [task, setTask]= useState<TaskData | null>(null);
 
   return (
    
-    <IonPage style={{alignItems:'center'}}>
-      <IonContent>
+    
+      <IonContent  style={{alignItems:'center'}}>
       <IonCard style={{
                maxWidth: '650px', 
                width: '100%',
@@ -85,7 +85,7 @@ const [task, setTask]= useState<TaskData | null>(null);
         </IonCardContent>
       </IonCard>
    </IonContent>
-   </IonPage>
+   
    )
 };
 export default Details;

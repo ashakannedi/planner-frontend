@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-import { IonIcon, IonModal, IonButton, IonInput, IonPage, IonContent } from '@ionic/react';
-=======
+
 import React, { useState, useEffect } from 'react';
-import { IonIcon, IonModal, IonButton, IonInput } from '@ionic/react';
->>>>>>> Registration/Tiru
+import { IonIcon, IonModal, IonButton, IonInput,IonContent,IonPage } from '@ionic/react';
 import { pencilOutline, trashOutline } from 'ionicons/icons';
 import axios from 'axios';
 import './Users.css';
@@ -19,17 +15,9 @@ interface User {
   role: string;
   gender: string;
 }
-
-<<<<<<< HEAD
-const Users:React.FC=()=> {
-  const [userData, setUserData] = useState<User[]>([
-    // Initial user data
-  ]);
-  
-=======
 function Users() {
   const [userData, setUserData] = useState<User[]>([]);
->>>>>>> Registration/Tiru
+
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -96,7 +84,7 @@ function Users() {
   };
 
   return (
-    <IonPage>
+    <>
       <IonContent>
     <div className="users-container">
       <table className="users-table">
@@ -177,7 +165,8 @@ function Users() {
           <IonButton onClick={() => setIsModalOpen(false)}>Cancel</IonButton>
         </div>
       </IonModal>
-    </div></IonContent></IonPage>
+    </div></IonContent>
+    </>
   );
 }
 

@@ -10,10 +10,17 @@ function Loginform() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // Error state for displaying errors
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
-  const [logoutMessage, setLogoutMessage] = useState(""); // State for logout message
+  const [logoutMessage, setLogoutMessage] = useState(""); 
+  const [role, setRole] = useState('');// State for logout message
   const history = useHistory();
   const location = useLocation();
 
+
+  const handleLoginrole = () => {
+    
+    localStorage.setItem('role', role);
+    history.push('/');
+  };
   useEffect(() => {
     // Check if the user is already logged in
     const checkLoginStatus = async () => {
@@ -48,7 +55,7 @@ function Loginform() {
       setEmail("");
       setPassword("");
       setIsLoggedIn(true); // Update login state
-      history.push('/home');
+      history.push('/navbar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ');
     } catch (error) {
       const err = error as AxiosError; // Type assertion
       if (err.response && err.response.status === 401) {
@@ -111,8 +118,14 @@ function Loginform() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+              <div>
+              <select value={role} onChange={(e) => setRole(e.target.value)}>
+             <option value="user">User</option>
+              <option value="admin">Admin</option>
+             </select></div>
+      
             </div>
-            <button type="submit" className="submit-button">Login</button>
+            <button type="submit" className="submit-button" >Login</button>
             {error && <p className="error-message">{error}</p>}
             <div className="center">
               <span>OR</span>

@@ -50,7 +50,7 @@ function Adduser(){
     }
 
     return (
-        <IonPage>
+        <>
         <IonContent>
         <div className='User-container' >
             <div className='image-container-item'>
@@ -142,7 +142,8 @@ function Adduser(){
             </div>
         </div>
         
-        </IonContent></IonPage>
+        </IonContent>
+        </>
     );
 }
 export default Adduser;

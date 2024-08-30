@@ -39,7 +39,7 @@ const TaskbyUserid: React.FC = () => {
     };
 
     return (
-        <IonPage>
+        <>
             <IonContent>
             <div className="table-container">
                 <table className="table">
@@ -75,7 +75,7 @@ const TaskbyUserid: React.FC = () => {
                     </tbody>
                 </table>
             </div></IonContent>
-        </IonPage>
+        </>
     );
 }
 

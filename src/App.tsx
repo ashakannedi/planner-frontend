@@ -1,75 +1,74 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-// import { Route, Routes, useNavigate, } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, IonRouterOutlet, setupIonicReact, IonPage, IonContent } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import Navbar from './components/Nav';
 import Home from './pages/Home';
-import Taskspage from './pages/Taskspage';
 import Projects from './pages/Projects';
-//import Details from './pages/Details';
+import Taskspage from './pages/Taskspage';
+import Users from './pages/Users';
+import Adduser from './pages/Adduser';
+import Project from './pages/Project';
+import Task from './pages/Task';
+import Details from './pages/Details';
 import DetailsByTaskId from './pages/DetailsByTaskId';
-import Navbar from './pages/Nav';
+import Registration from './pages/Registration';
+import TaskbyUserid from './pages/TaskbyUserid';
+import Loginform from './pages/Loginform';
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
-
-/* Basic CSS for apps built with Ionic */
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
-
-/* Optional CSS utils that can be commented out */
 import '@ionic/react/css/padding.css';
 import '@ionic/react/css/float-elements.css';
 import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
+
 /* Theme variables */
 import './theme/variables.css';
-import Registration from './pages/Registration';
-
-
-
-
-
-import Users from './pages/Users';
-import Userproject from './pages/Userproject';
-import Adduser from './pages/Adduser';
-import Usertask from './pages/Usertask';
-import TaskbyUserid from './pages/TaskbyUserid';
-import Task from './pages/Task';
-import Project from'./pages/Project';
-import Loginform from './pages/Loginform';
+import { AuthProvider } from './components/AuthContext';
 
 setupIonicReact();
 
-const App = () => {
-  
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <IonPage>
+      <IonContent>
+        {children}
+      </IonContent>
+    </IonPage>
+  );
+};
 
-  return(
-  <IonApp>
+const App: React.FC = () => {
+  return (
     <IonReactRouter>
+       <AuthProvider>
       <IonRouterOutlet>
-      <Switch>
-          <Route path="/navbar"><Navbar/></Route> 
-          <Route path="/projects"><Projects/></Route>
-          <Route path="/taskbyuserid"><TaskbyUserid/></Route>
-          <Route path="/taskspage/:id" component={Taskspage}></Route> 
-          {/* <Route path="/details/:id" component={Details}><Details/></Route> */}
-          <Route path="/detailsbasedontaskid/:id" component={DetailsByTaskId}><DetailsByTaskId/></Route>
-          <Route path="/home"><Home/></Route>
-          <Route path="/register" component={Registration} />
-          <Route path="/login" component={Loginform} />
-          <Route path="/usertask" component={Task}/>
-          <Route path="/adduser"component={Adduser}/>
-          <Route path="/userproject" component={Project}/>
-           <Route path="/user" component={Users}/>
-        </Switch> 
+       
+        <Switch>
+          <Route exact path="/" render={() => <Layout><Navbar /><Home /></Layout>} />
+          <Route path="/projects" render={() => <Layout><Navbar /><Projects /></Layout>} />
+          <Route path="/taskbyuserid" render={() => <Layout><Navbar /><TaskbyUserid /></Layout>} />
+          <Route path="/taskspage/:id" render={() => <Layout><Navbar /><Taskspage /></Layout>} />
+          <Route path="/details/:id" render={() => <Layout><Navbar /><Details /></Layout>} />
+          <Route path="/detailsbasedontaskid/:id" render={() => <Layout><Navbar /><DetailsByTaskId /></Layout>} />
+          <Route path="/register" render={() => <Layout><Navbar /><Registration /></Layout>} />
+          <Route path="/login" render={() => <Layout><Navbar /><Loginform /></Layout>} />
+          <Route path="/task" render={() => <Layout><Navbar /><Task /></Layout>} />
+          <Route path="/adduser" render={() => <Layout><Navbar /><Adduser /></Layout>} />
+          <Route path="/project" render={() => <Layout><Navbar /><Project /></Layout>} />
+          <Route path="/users" render={() => <Layout><Navbar /><Users /></Layout>} />
+          <Redirect to="/" /> {/* Redirect to home if no route matches */}
+        </Switch>
       </IonRouterOutlet>
+      </AuthProvider>
     </IonReactRouter>
-  </IonApp>
-);
-}
+  );
+};
 
 export default App;
-

@@ -70,7 +70,7 @@ const Details: React.FC = () => {
   };
 
   return (
-    <IonPage>
+    <>
       <IonHeader className='head'>
         <IonToolbar className='backkk'>
           <IonTitle>Task Details</IonTitle>
@@ -211,7 +211,7 @@ const Details: React.FC = () => {
           </IonCardContent>
         </IonCard>
       </IonContent>
-    </IonPage>
+    </>
   );
 };
 
