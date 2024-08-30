@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 
 import React, { useState, useEffect } from 'react';
 import { IonIcon, IonModal, IonButton, IonInput,IonContent,IonPage } from '@ionic/react';
+=======
+import React, { useState, useEffect } from 'react';
+import { IonIcon, IonModal, IonButton, IonInput } from '@ionic/react';
+>>>>>>> cfbecdbf11c81fc3687ff2edf69ed03d53dc8e72
 import { pencilOutline, trashOutline } from 'ionicons/icons';
 import axios from 'axios';
 import './Users.css';
@@ -15,9 +20,15 @@ interface User {
   role: string;
   gender: string;
 }
+<<<<<<< HEAD
 function Users() {
   const [userData, setUserData] = useState<User[]>([]);
 
+=======
+
+function Users() {
+  const [userData, setUserData] = useState<User[]>([]);
+>>>>>>> cfbecdbf11c81fc3687ff2edf69ed03d53dc8e72
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -84,8 +95,11 @@ function Users() {
   };
 
   return (
+<<<<<<< HEAD
     <>
       <IonContent>
+=======
+>>>>>>> cfbecdbf11c81fc3687ff2edf69ed03d53dc8e72
     <div className="users-container">
       <table className="users-table">
         <thead>
@@ -165,8 +179,12 @@ function Users() {
           <IonButton onClick={() => setIsModalOpen(false)}>Cancel</IonButton>
         </div>
       </IonModal>
+<<<<<<< HEAD
     </div></IonContent>
     </>
+=======
+    </div>
+>>>>>>> cfbecdbf11c81fc3687ff2edf69ed03d53dc8e72
   );
 }
 

@@ -131,7 +131,7 @@ function Loginform() {
               <span>OR</span>
             </div>
             <div className="register-link">
-              <p>Don’t have an account? <a href="/register">Register</a></p>
+              <p>Don’t have an account? <a href="/adduser">Register</a></p>
             </div>
           </form>
         )}

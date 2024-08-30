@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, IonDatetime} from '@ionic/react';
+import { IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, IonLabel } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
 import './Home.css';
 import axios from 'axios';
+
 
 // Define the type for task data
 interface TaskData {
@@ -13,27 +14,45 @@ interface TaskData {
   startDate: string;
   endDate: string;
   status: string;
-  completed: string;
+  percentage: string;
   priority: string;
-  assignDate: string;
-  deadLine: string;
+  assignedDate: string;
+  assignedDeadline: string;
 }
 
 const Home: React.FC = () => {
   const [tasks, setTasks] = useState<TaskData[]>([
-    
+    {
+      id: '01',
+      name: 'Dev',
+      title: 'Frontend',
+      description: 'Development of visual and interactive elements...',
+      startDate: '21-08-2024',
+      endDate: '23-09-2024',
+      status: 'Started',
+      percentage: '10%',
+      priority: 'High',
+      assignedDate: '21-08-2024',
+      assignedDeadline: '15-09-2024',
+    },
+    {
+      id: '02',
+      name: 'Devi',
+      title: 'Frontend Engineer',
+      description: 'Development of visual and interactive elements...',
+      startDate: '20-08-2024',
+      endDate: '20-09-2024',
+      status: 'Started',
+      percentage: '20%',
+      priority: 'High',
+      assignedDate: '19-08-2024',
+      assignedDeadline: '23-09-2024',
+    }
   ]);
 
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [editedTask, setEditedTask] = useState<Partial<TaskData>>({});
   const [newTask, setNewTask] = useState<Partial<TaskData>>({});
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  const [showModal, setShowModal] = useState({ modal: false, field: '' });
-  const[startdate,setStartDate] = useState(null);
-  const[enddate,setEndDate] = useState(null);
-  const[assignDate,setAssignedDate] = useState(null);
-  const[assigneddeadline,setAssignedDeadline] = useState(null)
-
   const statusOptions = ['Started', 'In Progress', 'Completed'];
   const priorityOptions = ['High', 'Medium', 'Low'];
 
@@ -74,21 +93,6 @@ const Home: React.FC = () => {
       }));
     }
   };
-  const handleDateChange = (e: CustomEvent, field: keyof TaskData) => {
-    const value = e.detail.value as string;
-    if (editIndex !== null) {
-      setEditedTask(prevState => ({
-        ...prevState,
-        [field]: value,
-      }));
-    } else {
-      setNewTask(prevState => ({
-        ...prevState,
-        [field]: value,
-      }));
-    }
-  };
-
 
   const handlePriorityChange = (event: CustomEvent) => {
     const value = event.detail.value;
@@ -126,17 +130,32 @@ const Home: React.FC = () => {
     setTasks([...tasks, { ...newTask, id: newTaskId } as TaskData]);
     setNewTask({}); // Clear new task input fields
   };
-
+ 
   const history = useHistory();
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:8080/userDetails/logout", {}, { withCredentials: true });
-      history.push('/login?logout=true'); // Redirect to login page
+      // Send the logout request
+      const response = await axios.post("http://localhost:8080/userDetails/logout", {}, { withCredentials: true });
+
+  
+      // Log or display the success message
+      console.log(response.data); // For debugging, remove in production
+  
+      // Optionally display a message before redirecting (using a state or alert)
+      alert("Logout successful");
+  
+      // Redirect to login page with query parameter
+      history.push('/login?logout=true');
     } catch (error) {
       console.error("Error during logout:", error);
+  
+      // Optionally display an error message to the user
+      alert("Logout failed. Please try again.");
     }
   };
+  
+
 
   return (
    
@@ -170,10 +189,10 @@ const Home: React.FC = () => {
                     <td><IonInput name="startDate" value={editedTask.startDate || ''} onIonInput={handleInputChange} /></td>
                     <td><IonInput name="endDate" value={editedTask.endDate || ''} onIonInput={handleInputChange} /></td>
                     <td><IonInput name="status" value={editedTask.status || ''} onIonInput={handleInputChange} /></td>
-                    <td><IonInput name="percentage" value={editedTask.completed || ''} onIonInput={handleInputChange} /></td>
+                    <td><IonInput name="percentage" value={editedTask.percentage || ''} onIonInput={handleInputChange} /></td>
                     <td><IonInput name="priority" value={editedTask.priority || ''} onIonInput={handleInputChange} /></td>
-                   <td><IonDatetime name="assignedDate" value={editedTask.assignDate || ''} onIonChange={ (e:CustomEvent) =>handleDateChange} /></td> 
-                    <td><IonDatetime name="assignedDeadline" value={editedTask.deadLine || ''} onIonChange={(e:CustomEvent)=> handleDateChange} /></td> 
+                    <td><IonInput name="assignedDate" value={editedTask.assignedDate || ''} onIonInput={handleInputChange} /></td>
+                    <td><IonInput name="assignedDeadline" value={editedTask.assignedDeadline || ''} onIonInput={handleInputChange} /></td>
                   </>
                 ) : (
                   <>
@@ -183,10 +202,10 @@ const Home: React.FC = () => {
                     <td>{task.startDate}</td>
                     <td>{task.endDate}</td>
                     <td>{task.status}</td>
-                    <td>{task.completed}</td>
+                    <td>{task.percentage}</td>
                     <td>{task.priority}</td>
-                    <td>{task.assignDate}</td>
-                    <td>{task.deadLine}</td>
+                    <td>{task.assignedDate}</td>
+                    <td>{task.assignedDeadline}</td>
                   </>
                 )}
                 <td>
@@ -214,29 +233,27 @@ const Home: React.FC = () => {
                   value={newTask.status || ''}
                   onIonChange={handleStatusChange}
                   interface='popover'
-                  placeholder='Status'
                 >
                   {statusOptions.map(option => (
                     <IonSelectOption key={option} value={option}>{option}</IonSelectOption>
                   ))}
                 </IonSelect>
               </td>
-              <td><IonInput name="percentage" value={newTask.completed || ''} onIonInput={handleNewTaskChange} placeholder="Percentage" /></td>
+              <td><IonInput name="percentage" value={newTask.percentage || ''} onIonInput={handleNewTaskChange} placeholder="Percentage" /></td>
               <td>
                 <IonSelect
                   name="priority"
                   value={newTask.priority || ''}
                   onIonChange={handlePriorityChange}
                   interface='popover'
-                  placeholder='Priority'
                 >
                   {priorityOptions.map(option => (
                     <IonSelectOption key={option} value={option}>{option}</IonSelectOption>
                   ))}
                 </IonSelect>
               </td>
-              <td><IonInput name="assignedDate" value={newTask.assignDate || ''} onIonInput={handleNewTaskChange} placeholder="Assigned Date" /></td>
-              <td><IonInput name="assignedDeadline" value={newTask.deadLine || ''} onIonInput={handleNewTaskChange} placeholder="Assigned Deadline" /></td>
+              <td><IonInput name="assignedDate" value={newTask.assignedDate || ''} onIonInput={handleNewTaskChange} placeholder="Assigned Date" /></td>
+              <td><IonInput name="assignedDeadline" value={newTask.assignedDeadline || ''} onIonInput={handleNewTaskChange} placeholder="Assigned Deadline" /></td>
               <td>
                 <IonButton onClick={addNewTask}>Add</IonButton>
               </td>
