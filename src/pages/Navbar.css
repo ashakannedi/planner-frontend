@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:  7px; 
+  background-color: #9ee4f0; 
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 4px 5px rgba(190, 212, 219, 0.637); 
+ }
+ .ion-button {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 12px; 
+}
+.ion-select {
+  width: 100%;
+}

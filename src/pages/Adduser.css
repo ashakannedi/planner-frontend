@@ -1,0 +1,119 @@
+
+
+.User-container {
+    max-width: 800px;
+    
+    margin: 0 auto; /* Reduced margins */
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+   
+    height: 600px; /* Decreased height */
+    margin-bottom: 50px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(16, 5, 8, 0.6);
+    background-color: white;
+    border-radius: 20px;/* Ensure padding is included in width/height */
+    
+}
+
+.image-container-item {
+    display: flex;
+    width: 55%; /* Reduced width */
+    height: 105%;
+}
+
+.left-image-item {
+    width: 90%;
+    height: 100%;
+    border-radius: 2%;
+}
+
+.form-items-item {
+    flex: 3;
+    padding: 5px; /* Reduced padding */
+    width: 65%; /* Adjusted width */
+   
+}
+
+.form-title-item {
+    text-align: center;
+    margin-bottom: 15px; /* Reduced bottom margin */
+    display: grid;
+}
+
+.input-container-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Reduced bottom margin */
+}
+
+.input-icon-item{
+    position: absolute;
+    left: 8px; /* Reduced left positioning */
+    color: #000000;
+    font-size: 20px; /* Reduced font size */
+    pointer-events: none;
+}
+
+.underline-input-item {
+    width: 100%;
+    padding: 8px 8px 8px 36px; /* Reduced padding */
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+    outline: none;
+    font-size: 14px; /* Reduced font size */
+}
+
+.underline-input-item:focus {
+    border-bottom: 2px solid #3880ff;
+}
+
+.underline-input-item::placeholder {
+    transition: transform 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+    color: #aaa;
+    font-weight: 400;
+}
+
+.underline-input-item:focus::placeholder {
+    transform: translateY(-8px); /* Reduced transform */
+    font-size: 12px;
+    color: #000000;
+}
+
+select {
+    width: 100%;
+    padding: 8px; /* Reduced padding */
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+    outline: none;
+    font-size: 14px; /* Reduced font size */
+}
+
+select:focus {
+    border-bottom: 2px solid #3880ff;
+}
+
+.button-container-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px; /* Reduced top margin */
+}
+
+.btn {
+    width: 45%; /* Adjusted width */
+    padding: 8px; /* Reduced padding */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: #b32533;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #241b97;
+}
